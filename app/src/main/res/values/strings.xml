@@ -1,4 +1,6 @@
 <resources>
     <string name="app_name">My Movies App</string>
-    <string name="Hello_World">Hello World!!!</string>
+    <string name="main_img_description">Main image</string>
+    <string name="background_img_description">"Background image</string>
+
 </resources>

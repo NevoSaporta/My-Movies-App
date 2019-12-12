@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="background_height">200dp</dimen>
+    <dimen name="background_width">200dp</dimen>
+    <dimen name="main_height">240dp</dimen>
+    <dimen name="main_width">160dp</dimen>
+    <dimen name="small_margin">16dp</dimen>
+    <dimen name="middle_lnearLayout_width">16dp</dimen>
+</resources>
