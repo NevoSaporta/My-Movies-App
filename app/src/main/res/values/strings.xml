@@ -2,5 +2,10 @@
     <string name="app_name">My Movies App</string>
     <string name="main_img_description">Main image</string>
     <string name="background_img_description">"Background image</string>
+    <string name="trailer_btn_text">MOVIE TRAILER</string>
+    <string name="avengers_name">Avengers: Infinity War</string>
+    <string name="released">Released:</string>
+    <string name="avengers_iw_released_date">2018—01—01</string>
+    <string name="overview_title">Overview</string>
 
 </resources>
