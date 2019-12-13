@@ -53,12 +53,13 @@
                 android:layout_height="wrap_content"
                 android:text="@string/avengers_iw_released_date" />
         </LinearLayout>
+
         <Button
             android:id="@+id/movie_trailer_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/regular_margin"
-            tools:text="@string/trailer_btn_text"/>
+            android:text="@string/trailer_btn_text" />
 
     </LinearLayout>
 
@@ -76,6 +77,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignStart="@id/main_img"
-        android:layout_below="@id/overview_title"/>
+        android:layout_below="@id/overview_title"
+        android:text="@string/infinity_war_overview"/>
 
 </RelativeLayout>
