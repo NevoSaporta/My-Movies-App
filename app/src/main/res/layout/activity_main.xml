@@ -58,7 +58,7 @@
                 android:id="@+id/released_date"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/avengers_iw_released_date" />
+                android:text="@string/avengers_released_date" />
         </LinearLayout>
 
         <Button
