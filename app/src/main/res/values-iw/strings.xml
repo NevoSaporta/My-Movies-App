@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">My Movies App</string>
+    <string name="main_img_description">Main image</string>
+    <string name="background_img_description">"Background image</string>
+    <string name="trailer_btn_text">לטריילר</string>
+    <string name="avengers_name">הנוקמים: סוף המשחק</string>
+    <string name="released">תאריך הפצה:</string>
+    <string name="avengers_released_date">2018—01—01</string>
+    <string name="overview_title">תיאור:</string>
+    <string name="avengers_url">https://www.youtube.com/watch?v=6ZfuNTqbHE8</string>
+    <string name="infinity_war_overview">הנוקמים נלחמים בתאנוס יהיה כיף</string>
+</resources>
