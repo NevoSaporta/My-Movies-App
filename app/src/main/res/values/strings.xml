@@ -3,10 +3,32 @@
     <string name="main_img_description">Main image</string>
     <string name="background_img_description">"Background image</string>
     <string name="trailer_btn_text">MOVIE TRAILER</string>
-    <string name="avengers_name">Avengers: Infinity War</string>
     <string name="released">Released:</string>
-    <string name="avengers_released_date">2018—01—01</string>
     <string name="overview_title">Overview</string>
-    <string name="avengers_url">https://www.youtube.com/watch?v=6ZfuNTqbHE8</string>
+    <!--> titles </!-->
+    <string name="infinity_war_name">Avengers: Infinity War</string>
+    <string name="black_panther_name">Black Panther</string>
+    <string name="deadpool2_name">Deadpool 2</string>
+    <string name="guardians_of_the_galaxy_name">Guardians Of The Galaxy</string>
+    <string name="interstellar_name">Interstellar</string>
+    <string name="jurrasic_world_name">Jurassic World: Fallen Kingdom </string>
+    <string name="oceans8_name">Ocean\'s 8</string>
+    <string name="the_first_purge_name">The First Purge</string>
+    <string name="the_meg_name">The Meg</string>
+    <string name="thor_ragnarok_name">Thor: Ragnarok</string>
+    <!--> release dates </!-->
+    <string name="infinity_war_released_date">2018—01—01</string>
+    <!--> urls </!-->
+    <string name="infinity_war_url">https://www.youtube.com/watch?v=6ZfuNTqbHE8</string>
+    <!--> overviews </!-->
     <string name="infinity_war_overview">As the Avengers and their allies have continued to protect the world from threats too large for any one hero to handle, a new danger has emerged from the cosmic shadows: Thanos. A despot of intergalactic infamy, his goal is to collect all six Infinity Stones, artifacts of unimaginable power, and use them to inflict his twisted will on all of reality. Everything the Avengers have fought for has led up to this moment - the fate of Earth and existence itself has never been more uncertain.</string>
+    <string name="black_panther_overview">TChalla, heir to the hidden but advanced kingdom of Wakanda, must step forward to lead his people into a new future and must confront a challenger from his country past.</string>
+    <string name="thor_ragnarok_overview">Imprisoned on the planet Sakaar, Thor must race against time to return to Asgard and stop Ragnarök, the destruction of his world, at the hands of the powerful and ruthless villain Hela.</string>
+    <string name="guardians_of_the_galaxy_overview">A group of intergalactic criminals must pull together to stop a fanatical warrior with plans to purge the universe.</string>
+    <string name="the_meg_overview">A group of scientists exploring the Marianas Trench encounter the largest marine predator that has ever existed - the Megalodon.</string>
+    <string name="the_firs_purge_overview">Americas third political party, the New Founding Fathers of America, comes to power and conducts an experiment: no laws for 12 hours on Staten Island. No one has to stay on the island, but $5,000 is given to anyone who does.</string>
+    <string name="oceans_8_overview">Debbie Ocean gathers an all-female crew to attempt an impossible heist at New York Citys yearly Met Gala.</string>
+    <string name="jurassic_world_overview">When the islands dormant volcano begins roaring to life, Owen and Claire mount a campaign to rescue the remaining dinosaurs from this extinction-level event.</string>
+    <string name="interstellar_overview">A team of explorers travel through a wormhole in space in an attempt to ensure humanitys survival.</string>
+    <string name="deadpool2_overview">Foul-mouthed mutant mercenary Wade Wilson (a.k.a. Deadpool), brings together a team of fellow mutant rogues to protect a young boy with supernatural abilities from the brutal, time-traveling cyborg Cable.</string>
 </resources>

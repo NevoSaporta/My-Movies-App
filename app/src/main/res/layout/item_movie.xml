@@ -18,18 +18,18 @@
             android:id="@+id/iw_overview_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/infinity_war_overview" />
+            tools:text="@string/infinity_war_overview" />
     </ScrollView>
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/ma_main_img"
-        android:layout_width="@dimen/main_width"
-        android:layout_height="@dimen/main_height"
+        android:layout_width="@dimen/item_image_width"
+        android:layout_height="@dimen/item_image_height"
         android:layout_margin="@dimen/small_margin"
         android:layout_marginStart="16dp"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
         tools:src="@drawable/infinity_war" />
 
     <TextView
@@ -37,7 +37,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/small_margin"
-        tools:text="@string/avengers_name"
+        tools:text="@string/infinity_war_name"
         app:layout_constraintStart_toEndOf="@+id/ma_main_img"
         app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
