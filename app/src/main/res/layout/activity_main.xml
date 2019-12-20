@@ -23,7 +23,7 @@
         android:layout_marginTop="@dimen/small_margin"
         android:layout_marginEnd="@dimen/small_margin"
         android:layout_marginBottom="@dimen/small_margin"
-        android:src="@drawable/infinity_war_image"
+        android:src="@drawable/infinity_war"
         android:contentDescription="@string/main_img_description" />
     <LinearLayout
         android:id="@+id/middle_layout"
