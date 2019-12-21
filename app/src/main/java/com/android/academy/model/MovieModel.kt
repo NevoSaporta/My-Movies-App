@@ -1,4 +1,4 @@
-package com.android.academy
+package com.android.academy.model
 
 import androidx.annotation.DrawableRes
 

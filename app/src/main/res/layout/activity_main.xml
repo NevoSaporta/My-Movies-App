@@ -86,7 +86,7 @@
         android:layout_below="@id/overview_title"
         android:layout_alignParentBottom="true">
         <TextView
-            android:id="@+id/iw_overview_text"
+            android:id="@+id/ma_overview_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/infinity_war_overview"/>

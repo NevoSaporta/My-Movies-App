@@ -15,7 +15,7 @@
         app:layout_constraintTop_toBottomOf="@+id/ma_title_txt">
 
         <TextView
-            android:id="@+id/iw_overview_text"
+            android:id="@+id/ma_overview_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             tools:text="@string/infinity_war_overview" />
