@@ -104,7 +104,7 @@ class MoviesActivity : AppCompatActivity(),OnMovieClickListener {
             MovieModel(
                 getString(R.string.thor_ragnarok_name),
                 R.drawable.thor_ragnarok,
-                getString(R.string.the_meg_overview)
+                getString(R.string.thor_ragnarok_overview)
             )
         )
     }
