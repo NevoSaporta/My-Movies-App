@@ -1,6 +1,7 @@
 package com.android.academy.list
 
 import android.os.Bundle
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.android.academy.R
@@ -106,6 +107,10 @@ class MoviesActivity : AppCompatActivity(),OnMovieClickListener {
                 getString(R.string.the_meg_overview)
             )
         )
+    }
+
+    override fun onMovieClicked(movieModel: MovieModel) {
+        Toast.makeText(this, movieModel.name, Toast.LENGTH_SHORT).show()
     }
 
 }

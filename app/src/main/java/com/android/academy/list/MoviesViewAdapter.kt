@@ -12,8 +12,10 @@ import com.android.academy.model.MovieModel
 import kotlinx.android.synthetic.main.item_movie.view.*
 
 class MoviesViewAdapter (private val movieClickListener: OnMovieClickListener ,context:Context) : RecyclerView.Adapter<MoviesViewAdapter.ViewHolder>() {
+
     private val layoutInflater: LayoutInflater = context
         .getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
+
     private val movies = mutableListOf<MovieModel>()
 
     fun setData(newItems: List<MovieModel>){
@@ -25,7 +27,7 @@ class MoviesViewAdapter (private val movieClickListener: OnMovieClickListener ,c
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = layoutInflater
             .inflate(R.layout.item_movie, parent, false)
-        return ViewHolder(view)
+        return ViewHolder(view,movieClickListener)
     }
 
     override fun getItemCount(): Int = movies.size
@@ -34,15 +36,25 @@ class MoviesViewAdapter (private val movieClickListener: OnMovieClickListener ,c
         holder.bind(movies[position])
     }
 
-    inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+    inner class ViewHolder(view: View, movieClickListener: OnMovieClickListener) : RecyclerView.ViewHolder(view) {
+
         private val ivImage: ImageView = view.ma_main_img
         private val tvTitle: TextView = view.ma_title_txt
         private val tvOverview: TextView = view.ma_overview_text
+
+        private lateinit var movieModel: MovieModel
+
+        init {
+            view.setOnClickListener {
+                movieClickListener.onMovieClicked(movieModel)
+            }
+        }
 
         fun bind(movieModel: MovieModel) {
             ivImage.setImageResource(movieModel.imageRes)
             tvTitle.text = movieModel.name
             tvOverview.text = movieModel.overview
+            this.movieModel = movieModel
         }
 
     }
