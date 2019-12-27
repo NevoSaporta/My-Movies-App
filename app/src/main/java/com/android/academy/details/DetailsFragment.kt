@@ -8,20 +8,20 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import com.android.academy.R
 
-class MockFragment:Fragment(){
-    private lateinit var mockTextView :TextView
-    lateinit var mockText :String
+class DetailsFragment:Fragment(){
+    private lateinit var nameTextView :TextView
+    lateinit var nameText :String
     companion object{
-        fun newInstance(mockText:String):MockFragment{
-            val fragment =MockFragment()
-            fragment.mockText = mockText
+        fun newInstance(name:String):DetailsFragment{
+            val fragment =DetailsFragment()
+            fragment.nameText = name
             return fragment
         }
     }
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val view =inflater.inflate(R.layout.mock_fragment,container,false)
-        mockTextView = view.findViewById(R.id.mock_text)
-        mockTextView.text = mockText
+        val view =inflater.inflate(R.layout.fragment_details,container,false)
+        nameTextView = view.findViewById(R.id.movie_name_txt)
+        nameTextView.text = nameText
         return view
     }
 
