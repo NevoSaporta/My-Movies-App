@@ -8,7 +8,7 @@
 
 
     <TextView
-        android:id="@+id/ma_overview_text"
+        android:id="@+id/overview_text"
         android:layout_width="@dimen/item_overview_width"
         android:layout_height="@dimen/item_overview_height"
         android:layout_margin="@dimen/small_margin"

@@ -1,5 +1,6 @@
 package com.android.academy.list
 
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -15,6 +16,20 @@ class MoviesFragment :Fragment(), OnMovieClickListener {
     private lateinit var moviesRcv : RecyclerView
     private val movies :MutableList<MovieModel> = ArrayList()
     private lateinit var moviesAdapter : MoviesViewAdapter
+    private var listener :OnMovieClickListener? =null
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        if (context is OnMovieClickListener){
+            listener =context
+        }
+    }
+
+    override fun onDetach() {
+        super.onDetach()
+        listener = null
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -113,6 +128,6 @@ class MoviesFragment :Fragment(), OnMovieClickListener {
     }
 
     override fun onMovieClicked(movieModel: MovieModel) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        listener?.onMovieClicked(movieModel)
     }
 }

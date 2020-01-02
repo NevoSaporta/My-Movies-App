@@ -40,7 +40,7 @@ class MoviesViewAdapter (private val movieClickListener: OnMovieClickListener ,c
 
         private val ivImage: ImageView = view.ma_main_img
         private val tvTitle: TextView = view.ma_title_txt
-        private val tvOverview: TextView = view.ma_overview_text
+        private val tvOverview: TextView = view.overview_text
 
         private lateinit var movieModel: MovieModel
 

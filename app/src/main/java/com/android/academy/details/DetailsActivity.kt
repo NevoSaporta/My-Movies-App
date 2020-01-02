@@ -28,8 +28,9 @@ class DetailsActivity : AppCompatActivity() {
     }
 
     private fun loadFragments() {
+        /*
         fragments.add(DetailsFragment.newInstance(getString( R.string.guardians_of_the_galaxy_name)))
         fragments.add(DetailsFragment.newInstance(getString( R.string.the_meg_name)))
-        fragments.add(DetailsFragment.newInstance(getString( R.string.infinity_war_name)))
+        fragments.add(DetailsFragment.newInstance(getString( R.string.infinity_war_name)))*/
     }
 }

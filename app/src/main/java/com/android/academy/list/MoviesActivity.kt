@@ -5,10 +5,11 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.android.academy.R
+import com.android.academy.details.DetailsFragment
 import com.android.academy.model.MovieModel
 import kotlinx.android.synthetic.main.activity_movies.*
 
-class MoviesActivity : AppCompatActivity()/*,OnMovieClickListener*/ {
+class MoviesActivity : AppCompatActivity(),OnMovieClickListener{
 
     private val movies: MutableList<MovieModel> = mutableListOf()
     private lateinit var moviesAdapter: MoviesViewAdapter
@@ -112,10 +113,15 @@ class MoviesActivity : AppCompatActivity()/*,OnMovieClickListener*/ {
                 getString(R.string.thor_ragnarok_overview)
             )
         )
-    }
+    }*/
 
     override fun onMovieClicked(movieModel: MovieModel) {
-        Toast.makeText(this, movieModel.name, Toast.LENGTH_SHORT).show()
+        val detailsFragment = DetailsFragment.newInstance(movieModel)
+        supportFragmentManager
+            .beginTransaction()
+            .addToBackStack( null)
+            .replace(R.id.activity_movies_frame,detailsFragment)
+            .commit()
     }
-*/
+
 }
