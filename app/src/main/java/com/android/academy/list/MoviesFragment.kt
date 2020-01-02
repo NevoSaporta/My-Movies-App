@@ -18,6 +18,7 @@ class MoviesFragment :Fragment(), OnMovieClickListener {
     private lateinit var moviesAdapter : MoviesViewAdapter
     private var listener :OnMovieClickListener? =null
 
+
     override fun onAttach(context: Context) {
         super.onAttach(context)
         if (context is OnMovieClickListener){
@@ -41,8 +42,8 @@ class MoviesFragment :Fragment(), OnMovieClickListener {
         initRecyclerView()
         return view
     }
-
-    private fun loadMovies() {
+    fun getMovies():List<MovieModel> =movies
+     private fun loadMovies() {
         movies.add(
             MovieModel(
                 getString(R.string.black_panther_name),

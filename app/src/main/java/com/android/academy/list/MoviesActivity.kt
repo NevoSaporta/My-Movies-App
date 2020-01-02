@@ -6,22 +6,23 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.android.academy.R
 import com.android.academy.details.DetailsFragment
+import com.android.academy.details.DetailsFragmentHolder
 import com.android.academy.model.MovieModel
 import kotlinx.android.synthetic.main.activity_movies.*
 
 class MoviesActivity : AppCompatActivity(),OnMovieClickListener{
 
-    private val movies: MutableList<MovieModel> = mutableListOf()
-    private lateinit var moviesAdapter: MoviesViewAdapter
-
+    private lateinit var detailsFragmentHolder:DetailsFragmentHolder
+    private lateinit var moviesFragment :MoviesFragment
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_movies)
-        val moviesFragment = MoviesFragment()
+         moviesFragment = MoviesFragment ()
         supportFragmentManager
             .beginTransaction()
             .add(R.id.activity_movies_frame,moviesFragment)
             .commit()
+
         /*loadMovies()
         initRecyclerView()*/
     }
@@ -116,11 +117,13 @@ class MoviesActivity : AppCompatActivity(),OnMovieClickListener{
     }*/
 
     override fun onMovieClicked(movieModel: MovieModel) {
-        val detailsFragment = DetailsFragment.newInstance(movieModel)
+        detailsFragmentHolder = DetailsFragmentHolder.newInstance(
+            moviesFragment.getMovies()
+        )
         supportFragmentManager
             .beginTransaction()
             .addToBackStack( null)
-            .replace(R.id.activity_movies_frame,detailsFragment)
+            .replace(R.id.activity_movies_frame,detailsFragmentHolder)
             .commit()
     }
 
