@@ -17,11 +17,19 @@ class MoviesActivity : AppCompatActivity(),OnMovieClickListener{
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_movies)
-         moviesFragment = MoviesFragment ()
-        supportFragmentManager
-            .beginTransaction()
-            .add(R.id.activity_movies_frame,moviesFragment)
-            .commit()
+        moviesFragment=
+        if(savedInstanceState==null) {
+            MoviesFragment().also{
+                supportFragmentManager
+                    .beginTransaction()
+                    .add(R.id.activity_movies_frame,it,MoviesFragment.TAG)
+                    .commit()
+            }
+        }else{
+            supportFragmentManager.findFragmentByTag(MoviesFragment.TAG) as MoviesFragment
+        }
+
+
 
         /*loadMovies()
         initRecyclerView()*/
@@ -117,8 +125,9 @@ class MoviesActivity : AppCompatActivity(),OnMovieClickListener{
     }*/
 
     override fun onMovieClicked(movieModel: MovieModel) {
+        val movies =moviesFragment.getMovies()
         detailsFragmentHolder = DetailsFragmentHolder.newInstance(
-            moviesFragment.getMovies()
+            movies,movies.indexOf(movieModel)
         )
         supportFragmentManager
             .beginTransaction()

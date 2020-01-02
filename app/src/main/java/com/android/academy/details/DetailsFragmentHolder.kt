@@ -13,14 +13,15 @@ class DetailsFragmentHolder:Fragment() {
     private lateinit var detailsPager: ViewPager
     private lateinit var pagerAdapter : DetailsFragmentPagerAdapter
     private  var movies:ArrayList<MovieModel>? =ArrayList()
-
+    private  var index: Int =0
     companion object{
         private const val MOVIES_BUNDLE_KEY ="unique_movies_holder_key"
-
-        fun newInstance(movies:List<MovieModel>):DetailsFragmentHolder{
+        private const val INDEX_BUNDLE_KEY ="unique_index_holder_key"
+        fun newInstance(movies:List<MovieModel>,index:Int):DetailsFragmentHolder{
             val fragment =DetailsFragmentHolder()
             val args = Bundle()
             args.putParcelableArrayList(MOVIES_BUNDLE_KEY,ArrayList(movies))
+            args.putInt(INDEX_BUNDLE_KEY,index)
             fragment.arguments = args
             return fragment
         }
@@ -33,6 +34,7 @@ class DetailsFragmentHolder:Fragment() {
         val view = inflater.inflate(R.layout.fragment_details_holder,container,false)
         detailsPager = view.findViewById(R.id.activity_details_pager)
         movies = arguments?.getParcelableArrayList(MOVIES_BUNDLE_KEY)
+        index =arguments!!.getInt(INDEX_BUNDLE_KEY)
         val fragments =movies!!.map {
             DetailsFragment.newInstance(it)
         }
@@ -40,6 +42,7 @@ class DetailsFragmentHolder:Fragment() {
             pagerAdapter = DetailsFragmentPagerAdapter(it.supportFragmentManager,fragments)
 
             detailsPager.adapter =pagerAdapter
+            detailsPager.currentItem=index
         }
         return view
     }

@@ -18,7 +18,9 @@ class MoviesFragment :Fragment(), OnMovieClickListener {
     private lateinit var moviesAdapter : MoviesViewAdapter
     private var listener :OnMovieClickListener? =null
 
-
+    companion object{
+        val TAG =MoviesFragment::class.simpleName
+    }
     override fun onAttach(context: Context) {
         super.onAttach(context)
         if (context is OnMovieClickListener){
