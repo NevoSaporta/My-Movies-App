@@ -15,7 +15,7 @@ class DetailsActivity : AppCompatActivity() {
         setContentView(R.layout.activity_details)
         loadFragments()
         mPager = activity_details_pager
-        val pagerAdapter= MockFragmentPagerAdapter (supportFragmentManager,fragments)
+        val pagerAdapter= DetailsFragmentPagerAdapter (supportFragmentManager,fragments)
         mPager.adapter = pagerAdapter
         //setContentView(R.layout.activity_main)
         /*movie_trailer_btn.setOnClickListener { val webpage: Uri = Uri.parse(getString(

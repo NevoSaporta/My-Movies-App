@@ -1,44 +1,30 @@
 package com.android.academy.list
 
 import android.os.Bundle
-import android.widget.Toast
-import androidx.appcompat.app.AppCompatActivity
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.android.academy.R
 import com.android.academy.model.MovieModel
-import kotlinx.android.synthetic.main.activity_movies.*
 
-class MoviesActivity : AppCompatActivity()/*,OnMovieClickListener*/ {
+class MoviesFragment :Fragment(), OnMovieClickListener {
 
-    private val movies: MutableList<MovieModel> = mutableListOf()
-    private lateinit var moviesAdapter: MoviesViewAdapter
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_movies)
-        val moviesFragment = MoviesFragment()
-        supportFragmentManager
-            .beginTransaction()
-            .add(R.id.activity_movies_frame,moviesFragment)
-            .commit()
-        /*loadMovies()
-        initRecyclerView()*/
-    }
-
-   /* private fun initRecyclerView() {
-        movies_rv_list.layoutManager = LinearLayoutManager(this@MoviesActivity)
-        // Create Movies Adapter
-        moviesAdapter = MoviesViewAdapter(
-            context = this@MoviesActivity,
-            movieClickListener = this@MoviesActivity
-        )
-
-        // Attach Adapter to RecyclerView
-        movies_rv_list.adapter = moviesAdapter
-
-        // Populate Adapter with data
-        moviesAdapter.setData(movies)
-
+    private lateinit var moviesRcv : RecyclerView
+    private val movies :MutableList<MovieModel> = ArrayList()
+    private lateinit var moviesAdapter : MoviesViewAdapter
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        val view = inflater.inflate(R.layout.fragment_movies,container,false)
+        moviesRcv =view.findViewById(R.id.fragment_movies_rcv)
+        loadMovies()
+        initRecyclerView()
+        return view
     }
 
     private fun loadMovies() {
@@ -114,8 +100,19 @@ class MoviesActivity : AppCompatActivity()/*,OnMovieClickListener*/ {
         )
     }
 
-    override fun onMovieClicked(movieModel: MovieModel) {
-        Toast.makeText(this, movieModel.name, Toast.LENGTH_SHORT).show()
+    private fun initRecyclerView(){
+        context?.let {
+            moviesRcv.layoutManager = LinearLayoutManager(it)
+
+            moviesAdapter = MoviesViewAdapter(context = it,movieClickListener = this@MoviesFragment)
+
+            moviesRcv.adapter =moviesAdapter
+
+            moviesAdapter.setData(movies)
+        }
     }
-*/
+
+    override fun onMovieClicked(movieModel: MovieModel) {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
 }
