@@ -1,5 +1,7 @@
 package com.android.academy.details
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -50,6 +52,13 @@ class DetailsFragment:Fragment(){
         titleText.text = movie.name
         overviewText.text = movie.overview
         posterImage.setImageResource(movie.imageRes)
+        trailerButton.setOnClickListener {
+            val webpage:Uri = Uri.parse(movie.url)
+            val intent = Intent(Intent.ACTION_VIEW,webpage)
+            if(intent.resolveActivity(activity!!.packageManager)!=null){
+                startActivity(intent)
+            }
+        }
     }
 
 }

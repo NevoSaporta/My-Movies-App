@@ -20,7 +20,16 @@
     <!--> release dates </!-->
     <string name="infinity_war_released_date">2018—01—01</string>
     <!--> urls </!-->
+    <string name="black_panther_url">https://www.youtube.com/watch?v=xjDjIWPwcPU</string>
+    <string name="deadpool2_url">https://www.youtube.com/watch?v=D86RtevtfrA</string>
+    <string name="guardians_of_the_galaxy_url">https://www.youtube.com/watch?v=d96cjJhvlMA</string>
     <string name="infinity_war_url">https://www.youtube.com/watch?v=6ZfuNTqbHE8</string>
+    <string name="interstellar_url">https://www.youtube.com/watch?v=zSWdZVtXT7E</string>
+    <string name="jurassic_world_url">https://www.youtube.com/watch?v=vn9mMeWcgoM</string>
+    <string name="ocenas8_url">https://www.youtube.com/watch?v=MFWF9dU5Zc0</string>
+    <string name="the_first_purge_url">https://www.youtube.com/watch?v=UL29y0ah92w</string>
+    <string name="the_meg_url">https://www.youtube.com/watch?v=udm5jUA-2bs</string>
+    <string name="thor_ragnarok_url">https://www.youtube.com/watch?v=ue80QwXMRHg</string>
     <!--> overviews </!-->
     <string name="infinity_war_overview">הנוקמים נלחמים בתאנוס יהיה כיף</string>
     <string name="black_panther_overview">TChalla, heir to the hidden but advanced kingdom of Wakanda, must step forward to lead his people into a new future and must confront a challenger from his country past.</string>
