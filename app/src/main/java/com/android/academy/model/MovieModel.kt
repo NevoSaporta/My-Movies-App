@@ -9,5 +9,6 @@ data class MovieModel (
     val name :String,
     @DrawableRes val imageRes: Int,
     val overview: String ="",
-    val url: String =""
+    val url: String ="",
+    @DrawableRes val backgroundRes: Int
 ):Parcelable

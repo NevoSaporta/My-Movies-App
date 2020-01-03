@@ -16,6 +16,7 @@ import com.android.academy.model.MovieModel
 class DetailsFragment:Fragment(){
 
     private lateinit var posterImage :ImageView
+    private lateinit var backImage :ImageView
     private lateinit var titleText :TextView
     private lateinit var releaseDateText :TextView
     private lateinit var trailerButton :Button
@@ -46,12 +47,13 @@ class DetailsFragment:Fragment(){
         releaseDateText = view.findViewById(R.id.fd_released_date)
         trailerButton = view.findViewById(R.id.fd_movie_trailer_btn)
         overviewText = view.findViewById(R.id.fd_overview_text)
-
+        backImage =view.findViewById(R.id.fd_background_img)
     }
     fun loadMovie(movie: MovieModel){
         titleText.text = movie.name
         overviewText.text = movie.overview
         posterImage.setImageResource(movie.imageRes)
+        backImage.setImageResource(movie.backgroundRes)
         trailerButton.setOnClickListener {
             val webpage:Uri = Uri.parse(movie.url)
             val intent = Intent(Intent.ACTION_VIEW,webpage)
