@@ -32,7 +32,7 @@ class DetailsFragmentHolder:Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val view = inflater.inflate(R.layout.fragment_details_holder,container,false)
-        detailsPager = view.findViewById(R.id.activity_details_pager)
+        detailsPager = view.findViewById(R.id.fragment_details_holder_pager)
         movies = arguments?.getParcelableArrayList(MOVIES_BUNDLE_KEY)
         index =arguments!!.getInt(INDEX_BUNDLE_KEY)
         val fragments =movies!!.map {

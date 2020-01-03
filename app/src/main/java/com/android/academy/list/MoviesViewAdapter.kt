@@ -38,9 +38,9 @@ class MoviesViewAdapter (private val movieClickListener: OnMovieClickListener ,c
 
     inner class ViewHolder(view: View, movieClickListener: OnMovieClickListener) : RecyclerView.ViewHolder(view) {
 
-        private val ivImage: ImageView = view.ma_main_img
-        private val tvTitle: TextView = view.ma_title_txt
-        private val tvOverview: TextView = view.overview_text
+        private val ivImage: ImageView = view.im_main_img
+        private val tvTitle: TextView = view.im_title_txt
+        private val tvOverview: TextView = view.im_overview_text
 
         private lateinit var movieModel: MovieModel
 

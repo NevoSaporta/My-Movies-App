@@ -39,11 +39,11 @@ class DetailsFragment:Fragment(){
     }
 
     private fun initViews(view: View) {
-        posterImage = view.findViewById(R.id.main_img)
-        titleText = view.findViewById(R.id.movie_name_txt)
-        releaseDateText = view.findViewById(R.id.released_date)
-        trailerButton = view.findViewById(R.id.movie_trailer_btn)
-        overviewText = view.findViewById(R.id.overview_text)
+        posterImage = view.findViewById(R.id.fd_main_img)
+        titleText = view.findViewById(R.id.fd_movie_name_txt)
+        releaseDateText = view.findViewById(R.id.fd_released_date)
+        trailerButton = view.findViewById(R.id.fd_movie_trailer_btn)
+        overviewText = view.findViewById(R.id.fd_overview_text)
 
     }
     fun loadMovie(movie: MovieModel){

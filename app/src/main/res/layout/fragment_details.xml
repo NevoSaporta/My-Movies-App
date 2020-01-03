@@ -6,7 +6,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <ImageView
-        android:id="@+id/background_img"
+        android:id="@+id/fd_background_img"
         android:layout_width="match_parent"
         android:layout_height="@dimen/background_height"
         tools:src="@drawable/infinity_war_background"
@@ -15,10 +15,10 @@
         android:contentDescription="@string/background_img_description" />
 
     <ImageView
-        android:id="@+id/main_img"
+        android:id="@+id/fd_main_img"
         android:layout_width="@dimen/main_width"
         android:layout_height="@dimen/main_height"
-        android:layout_below="@id/background_img"
+        android:layout_below="@id/fd_background_img"
         android:layout_margin="@dimen/small_margin"
         android:layout_marginStart="@dimen/small_margin"
         android:layout_marginTop="@dimen/small_margin"
@@ -30,12 +30,12 @@
         android:id="@+id/middle_layout"
         android:layout_width="match_parent"
         android:layout_height="@dimen/main_height"
-        android:layout_alignTop="@id/main_img"
-        android:layout_toEndOf="@id/main_img"
+        android:layout_alignTop="@id/fd_main_img"
+        android:layout_toEndOf="@id/fd_main_img"
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/movie_name_txt"
+            android:id="@+id/fd_movie_name_txt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             tools:text="@string/infinity_war_name"
@@ -56,14 +56,14 @@
                 android:text="@string/released" />
 
             <TextView
-                android:id="@+id/released_date"
+                android:id="@+id/fd_released_date"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/infinity_war_released_date" />
         </LinearLayout>
 
         <Button
-            android:id="@+id/movie_trailer_btn"
+            android:id="@+id/fd_movie_trailer_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/regular_margin"
@@ -75,19 +75,19 @@
         android:id="@+id/overview_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignStart="@id/main_img"
-        android:layout_below="@id/main_img"
+        android:layout_alignStart="@id/fd_main_img"
+        android:layout_below="@id/fd_main_img"
         android:text="@string/overview_title"
         android:layout_marginBottom="@dimen/small_margin"
         android:textStyle="bold"/>
     <ScrollView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignStart="@id/main_img"
+        android:layout_alignStart="@id/fd_main_img"
         android:layout_below="@id/overview_title"
         android:layout_alignParentBottom="true">
         <TextView
-            android:id="@+id/overview_text"
+            android:id="@+id/fd_overview_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             tools:text="@string/infinity_war_overview"/>

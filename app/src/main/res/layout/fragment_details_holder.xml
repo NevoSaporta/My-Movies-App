@@ -5,7 +5,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <androidx.viewpager.widget.ViewPager
-        android:id="@+id/activity_details_pager"
+        android:id="@+id/fragment_details_holder_pager"
         android:layout_width="0dp"
         android:layout_height="match_parent"
         app:layout_constraintBottom_toBottomOf="parent"
