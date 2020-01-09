@@ -9,7 +9,7 @@ class CounterAsyncTask(private val iAsyncTaskEvents: IAsyncTaskEvents):AsyncTask
                 break
             }
             publishProgress(number)
-            Thread.sleep(5000)
+            Thread.sleep(500)
         }
         return "Done!"
     }
