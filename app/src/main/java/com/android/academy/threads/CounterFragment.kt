@@ -44,7 +44,7 @@ class CounterFragment:Fragment() {
 
     private fun initViews(view: View){
         mainText = view.findViewById(R.id.cf_main_text_view)
-        setMainTextView("This is ${activity!!.localClassName.removePrefix(activity!!.packageName)}")
+        setMainTextView("This is ${activity!!.javaClass.simpleName}")
         createButton = view.findViewById(R.id.cf_create_button)
         createButton.setOnClickListener {
             listener?.onCreatePressed()

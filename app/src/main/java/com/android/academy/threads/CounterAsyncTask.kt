@@ -14,6 +14,11 @@ class CounterAsyncTask(private val iAsyncTaskEvents: IAsyncTaskEvents):AsyncTask
         return "Done!"
     }
 
+    override fun onPreExecute() {
+        super.onPreExecute()
+        iAsyncTaskEvents.onPreExecute()
+    }
+
     override fun onProgressUpdate(vararg values: Int?) {
         iAsyncTaskEvents.onProgressUpdate(values[0]!!)
     }
