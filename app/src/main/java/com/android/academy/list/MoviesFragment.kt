@@ -35,6 +35,8 @@ class MoviesFragment :Fragment(), OnMovieClickListener {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        movies.clear()
+        loadMovies()
     }
 
     override fun onCreateView(
@@ -44,8 +46,6 @@ class MoviesFragment :Fragment(), OnMovieClickListener {
     ): View? {
         val view = inflater.inflate(R.layout.fragment_movies,container,false)
         moviesRcv =view.findViewById(R.id.fragment_movies_rcv)
-        movies.clear()
-        loadMovies()
         initRecyclerView()
         return view
     }

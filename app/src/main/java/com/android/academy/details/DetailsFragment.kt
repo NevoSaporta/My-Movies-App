@@ -33,6 +33,7 @@ class DetailsFragment:Fragment(){
             return fragment
         }
     }
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view =inflater.inflate(R.layout.fragment_details,container,false)
         val movie:MovieModel? = arguments?.getParcelable(MOVIE_BUNDLE_KEY)
