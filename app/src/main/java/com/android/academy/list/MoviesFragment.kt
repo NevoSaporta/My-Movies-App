@@ -1,6 +1,7 @@
 package com.android.academy.list
 
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.view.*
 import androidx.fragment.app.Fragment
@@ -8,6 +9,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.android.academy.R
 import com.android.academy.model.MovieModel
+import com.android.academy.threads.AsyncTaskActivity
 
 class MoviesFragment :Fragment(), OnMovieClickListener {
 
@@ -54,8 +56,28 @@ class MoviesFragment :Fragment(), OnMovieClickListener {
         inflater.inflate(R.menu.threads_menu,menu)
     }
 
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when(item.itemId){
+            R.id.task_menu_item ->{
+                val intent = Intent(activity,AsyncTaskActivity::class.java)
+                startActivity(intent)
+                true
+            }
+            /* TODO: remove comment */
+            /*
+            R.id.handler_menu_item ->{
+                val intent = Intent(activity,HandlerActivity::class.java)
+                true
+            }*/
+            else -> {
+                 super.onOptionsItemSelected(item)
+            }
+        }
+    }
+
     fun getMovies():List<MovieModel> =movies
-     private fun loadMovies() {
+
+    private fun loadMovies() {
         movies.add(
             MovieModel(
                 getString(R.string.black_panther_name),
