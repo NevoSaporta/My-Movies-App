@@ -17,7 +17,7 @@
     <ImageView
         android:id="@+id/fd_main_img"
         android:layout_width="@dimen/main_width"
-        android:layout_height="wrap_content"
+        android:layout_height="@dimen/main_height"
         android:layout_below="@id/fd_background_img"
         android:layout_margin="@dimen/small_margin"
         android:layout_marginStart="@dimen/small_margin"
