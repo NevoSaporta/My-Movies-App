@@ -27,14 +27,16 @@ class AsyncTaskActivity:AppCompatActivity(), IAsyncTaskEvents ,CounterFragemntHo
 
         if (savedInstanceState!=null){
             val startingNum = savedInstanceState.getInt(CURRENT_NUM_KEY)
-            val params = mutableListOf<Int>()
-            for (num in startingNum downTo  1){
-                params.add(num)
+            if(startingNum!=0){
+                val params = mutableListOf<Int>()
+                for (num in startingNum downTo  1){
+                    params.add(num)
+                }
+                counterAsyncTask = CounterAsyncTask(this)
+                counterAsyncTask.execute(*(params.toTypedArray()))
+                taskCreated = true
+                taskStarted = true
             }
-            counterAsyncTask = CounterAsyncTask(this)
-            counterAsyncTask.execute(*(params.toTypedArray()))
-            taskCreated = true
-            taskStarted = true
         }
     }
 
@@ -47,14 +49,18 @@ class AsyncTaskActivity:AppCompatActivity(), IAsyncTaskEvents ,CounterFragemntHo
     }
 
     override fun onPreExecute() {
-        //counterFragment.setMainTextView("EventTask Created!")
+        if(counterFragment.isVisible){
+            counterFragment.setMainTextView("EventTask Created!")
+        }
     }
 
     override fun onPostExecute(result: String?) {
-        counterFragment.setMainTextView(result!!)
-        currentNum=0
-        taskStarted =false
-        taskCreated =false
+            result?.let {
+                counterFragment.setMainTextView(it)
+                currentNum=0
+                taskStarted =false
+                taskCreated =false
+            }
     }
 
     override fun onProgressUpdate(num: Int) {
@@ -103,6 +109,7 @@ class AsyncTaskActivity:AppCompatActivity(), IAsyncTaskEvents ,CounterFragemntHo
 
     private fun cancelTask() {
         if (taskCreated) {
+            currentNum=0
             counterAsyncTask.cancel(true)
             taskCreated = false
             taskStarted = false
