@@ -7,5 +7,4 @@ class MySimpleAsyncTask {
     private val mainLooper = Looper.getMainLooper()
 
     val mainHandler = Handler(mainLooper)
-
 }

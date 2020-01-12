@@ -50,7 +50,7 @@ class AsyncTaskActivity:AppCompatActivity(), IAsyncTaskEvents ,CounterFragemntHo
 
     override fun onPreExecute() {
         if(counterFragment.isVisible){
-            counterFragment.setMainTextView("EventTask Created!")
+            counterFragment.setMainTextView("Movie starting in:")
         }
     }
 
