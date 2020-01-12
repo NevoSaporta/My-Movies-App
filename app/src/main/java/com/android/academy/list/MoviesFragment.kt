@@ -1,15 +1,16 @@
 package com.android.academy.list
 
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.android.academy.R
 import com.android.academy.model.MovieModel
+import com.android.academy.threads.AsyncTaskActivity
+import com.android.academy.threads.ThreadsActivity
 
 class MoviesFragment :Fragment(), OnMovieClickListener {
 
@@ -47,10 +48,36 @@ class MoviesFragment :Fragment(), OnMovieClickListener {
         val view = inflater.inflate(R.layout.fragment_movies,container,false)
         moviesRcv =view.findViewById(R.id.fragment_movies_rcv)
         initRecyclerView()
+        setHasOptionsMenu(true)
         return view
     }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        super.onCreateOptionsMenu(menu, inflater)
+        inflater.inflate(R.menu.threads_menu,menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when(item.itemId){
+            R.id.task_menu_item ->{
+                val intent = Intent(activity,AsyncTaskActivity::class.java)
+                startActivity(intent)
+                true
+            }
+            R.id.handler_menu_item ->{
+                val intent = Intent(activity,ThreadsActivity::class.java)
+                startActivity(intent)
+                true
+            }
+            else -> {
+                 super.onOptionsItemSelected(item)
+            }
+        }
+    }
+
     fun getMovies():List<MovieModel> =movies
-     private fun loadMovies() {
+
+    private fun loadMovies() {
         movies.add(
             MovieModel(
                 getString(R.string.black_panther_name),

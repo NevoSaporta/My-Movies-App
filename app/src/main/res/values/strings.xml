@@ -40,4 +40,13 @@
     <string name="jurassic_world_overview">When the islands dormant volcano begins roaring to life, Owen and Claire mount a campaign to rescue the remaining dinosaurs from this extinction-level event.</string>
     <string name="interstellar_overview">A team of explorers travel through a wormhole in space in an attempt to ensure humanitys survival.</string>
     <string name="deadpool2_overview">Foul-mouthed mutant mercenary Wade Wilson (a.k.a. Deadpool), brings together a team of fellow mutant rogues to protect a young boy with supernatural abilities from the brutal, time-traveling cyborg Cable.</string>
+    <!--> menu items </!-->
+    <string name="task_menu_item">Task</string>
+    <string name="handler_menu_item">Handler</string>
+    <!--> Counter Fragment<!-->
+    <string name="cf_create_btn">Create</string>
+    <string name="cf_start_btn">Start</string>
+    <string name="cf_cancel_btn">Cancel</string>
+    <string name="cf_text_async">This is AsyncTask Activity</string>
+    <string name="cf_text_handler">This is Handler Activity</string>
 </resources>

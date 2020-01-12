@@ -1,14 +1,17 @@
-package com.android.academy.list
+
+package com.android.academy
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.android.academy.R
 import com.android.academy.details.DetailsFragmentHolder
+import com.android.academy.list.MoviesFragment
+import com.android.academy.list.OnMovieClickListener
 import com.android.academy.model.MovieModel
 
-class MainActivity : AppCompatActivity(),OnMovieClickListener{
+class MainActivity : AppCompatActivity(),
+    OnMovieClickListener {
 
-    private lateinit var moviesFragment :MoviesFragment
+    private lateinit var moviesFragment : MoviesFragment
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_movies)
@@ -17,7 +20,9 @@ class MainActivity : AppCompatActivity(),OnMovieClickListener{
             MoviesFragment().also{
                 supportFragmentManager
                     .beginTransaction()
-                    .add(R.id.activity_movies_frame,it,MoviesFragment.TAG)
+                    .add(R.id.activity_movies_frame,it,
+                        MoviesFragment.TAG
+                    )
                     .commit()
             }
         }else{
