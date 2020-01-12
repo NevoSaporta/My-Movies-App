@@ -18,6 +18,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".threads.AsyncTaskActivity"/>
+        <activity android:name=".threads.ThreadsActivity"/>
     </application>
 
 </manifest>

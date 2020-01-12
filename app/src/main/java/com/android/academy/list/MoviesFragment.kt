@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.android.academy.R
 import com.android.academy.model.MovieModel
 import com.android.academy.threads.AsyncTaskActivity
+import com.android.academy.threads.ThreadsActivity
 
 class MoviesFragment :Fragment(), OnMovieClickListener {
 
@@ -63,12 +64,11 @@ class MoviesFragment :Fragment(), OnMovieClickListener {
                 startActivity(intent)
                 true
             }
-            /* TODO: remove comment */
-            /*
             R.id.handler_menu_item ->{
-                val intent = Intent(activity,HandlerActivity::class.java)
+                val intent = Intent(activity,ThreadsActivity::class.java)
+                startActivity(intent)
                 true
-            }*/
+            }
             else -> {
                  super.onOptionsItemSelected(item)
             }
