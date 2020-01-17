@@ -24,7 +24,7 @@ class BGServiceActivity:AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_bg_services)
-        start_intent_service_button.setOnClickListener {
+        bga_start_intent_service_button.setOnClickListener {
             if(isServiceStarted){
                 stopService(Intent(this, HardJobService::class.java))
                 isServiceStarted=false
@@ -34,7 +34,7 @@ class BGServiceActivity:AppCompatActivity() {
                 startService(Intent(this,HardJobIntentService::class.java))
             }
         }
-        start_service_button.setOnClickListener {
+        bga_start_service_button.setOnClickListener {
             if(isIntentServiceStarted){
                 stopService(Intent(this, HardJobIntentService::class.java))
                 isIntentServiceStarted=false
@@ -78,7 +78,7 @@ class BGServiceActivity:AppCompatActivity() {
                 }else{
                     text = String.format(Locale.getDefault(),"%d%%",progress)
                 }
-                progress_percentages.text = text
+                bga_progress_percentages.text = text
             }
         }
     }

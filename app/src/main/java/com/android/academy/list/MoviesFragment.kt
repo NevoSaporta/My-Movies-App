@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.android.academy.R
 import com.android.academy.model.MovieModel
 import com.android.academy.services.BGServiceActivity
+import com.android.academy.services.WorkManagerActivity
 import com.android.academy.threads.AsyncTaskActivity
 import com.android.academy.threads.ThreadsActivity
 
@@ -72,6 +73,11 @@ class MoviesFragment :Fragment(), OnMovieClickListener {
             }
             R.id.service_menu_item ->{
                 val intent = Intent(activity,BGServiceActivity::class.java)
+                startActivity(intent)
+                true
+            }
+            R.id.work_manager_menu_item ->{
+                val intent = Intent(activity,WorkManagerActivity::class.java)
                 startActivity(intent)
                 true
             }

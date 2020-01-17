@@ -6,4 +6,6 @@
             android:title ="@string/handler_menu_item"/>
         <item android:id ="@+id/service_menu_item"
             android:title ="@string/service_menu_item"/>
+        <item android:id ="@+id/work_manager_menu_item"
+            android:title ="@string/work_manager_menu_item"/>
 </menu>

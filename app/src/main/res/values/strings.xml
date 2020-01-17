@@ -53,4 +53,11 @@
     <string name="start_intent_service_button">START INTENT SERVICE</string>
     <string name="start_service_button">START SERVICE</string>
     <string name="progress_textview">The Progress</string>
+    <string name="wma_title_text">Worker progress</string>
+    <string name="wma_required_network">Required Network</string>
+    <string name="wma_required_charging">Required Charging</string>
+    <string name="wma_required_battery">Required Battery Not Low</string>
+    <string name="work_manager_menu_item">Open WorkerManager Activity</string>
+    <string name="wma_enqueue_button">ENQUEUE WORK</string>
+    <string name="wma_cancel_work_button">CANCEL WORK</string>
 </resources>

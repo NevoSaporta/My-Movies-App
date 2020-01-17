@@ -6,7 +6,7 @@
     android:layout_height="match_parent">
 
     <Button
-        android:id="@+id/start_intent_service_button"
+        android:id="@+id/bga_start_intent_service_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/small_margin"
@@ -15,7 +15,7 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        android:id="@+id/start_service_button"
+        android:id="@+id/bga_start_service_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/small_margin"
@@ -24,22 +24,24 @@
         app:layout_constraintEnd_toEndOf="parent" />
 
     <TextView
-        android:id="@+id/progress_tv"
+        android:id="@+id/bga_progress_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/progress_textview"
+        android:textSize="@dimen/bga_title_text_size"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/progress_percentages"
-        android:layout_width="67dp"
-        android:layout_height="12dp"
+        android:id="@+id/bga_progress_percentages"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/bga_progress_text_size"
         android:layout_margin="@dimen/small_margin"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/progress_tv"
+        app:layout_constraintTop_toBottomOf="@+id/bga_progress_tv"
         tools:text="40%"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
