@@ -19,7 +19,6 @@ class BGServiceActivity:AppCompatActivity() {
     companion object{
         const val PROGRESS_UPDATE_ACTION = "PROGRESS_UPDATE_ACTION"
         const val PROGRESS_VALUE_KEY = "PROGRESS_VALUE_KEY"
-        const val SERVICE_STATUS ="SERVICE_STATUS"
     }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -82,5 +81,6 @@ class BGServiceActivity:AppCompatActivity() {
             }
         }
     }
+
 }
 

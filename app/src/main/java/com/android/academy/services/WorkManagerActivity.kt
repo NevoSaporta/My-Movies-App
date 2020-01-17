@@ -1,21 +1,45 @@
 package com.android.academy.services
 
+import android.content.BroadcastReceiver
+import android.content.Context
+import android.content.Intent
+import android.content.IntentFilter
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.work.*
 import com.android.academy.R
 import kotlinx.android.synthetic.main.activity_work_manager.*
+import java.util.*
 
 class WorkManagerActivity:AppCompatActivity() {
-    private var workRunnig =false
+    private var workId:UUID? = null
+    private val workerBackGroundProgressReceiver = WorkerBackGroundProgressReceiver()
+    companion object{
+        const val PROGRESS_UPDATE_ACTION = "PROGRESS_UPDATE_ACTION"
+        const val PROGRESS_VALUE_KEY = "PROGRESS_VALUE_KEY"
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_work_manager)
+        wma_enqueue_work_button.setOnClickListener {
+            enqueueWork()
+        }
+        wma_cancel_work_button.setOnClickListener {
+            cancelWork()
+        }
     }
-    companion object{
-        const val TAG ="HARD_WORKER_REQUEST"
-        const val VIEW ="TEXT_VIEW"
+
+    override fun onStart() {
+        super.onStart()
+        registerReceiver(workerBackGroundProgressReceiver, IntentFilter(PROGRESS_UPDATE_ACTION))
     }
+
+    override fun onStop() {
+        unregisterReceiver(workerBackGroundProgressReceiver)
+        super.onStop()
+    }
+
     private fun enqueueWork(){
         val constraints =
             if(wma_network_switch.isChecked){
@@ -32,22 +56,31 @@ class WorkManagerActivity:AppCompatActivity() {
                     .setRequiresBatteryNotLow(wma_required_battery_switch.isChecked)
                     .build()
             }
-        val inputData = Data.Builder()
-            .putInt(VIEW,R.id.wma_progress_percentages)
-            .build()
         val myOneTimeWorkRequest = OneTimeWorkRequest
             .Builder(HardWorker::class.java)
             .setConstraints(constraints)
-            .setInputData(inputData)
-            .addTag(TAG)
             .build()
+        workId = myOneTimeWorkRequest.id
         WorkManager.getInstance(this).enqueue(myOneTimeWorkRequest)
-        workRunnig =true
     }
     private fun cancelWork(){
-        if(workRunnig){
-            WorkManager.getInstance(this).cancelAllWorkByTag(TAG)
+        workId?.let {
+            WorkManager.getInstance(this).cancelWorkById(it)
+            workId = null
+            wma_progress_percentages.text=""
+1        }
+    }
+    inner class WorkerBackGroundProgressReceiver: BroadcastReceiver(){
+        override fun onReceive(context: Context?, intent: Intent) {
+            val progress = intent.getIntExtra(PROGRESS_VALUE_KEY,-1)
+            if(progress>=0){
+                val text:String = if(progress>99){
+                    "Done!"
+                }else{
+                    String.format(Locale.getDefault(),"%d%%",progress)
+                }
+                wma_progress_percentages.text = text
+            }
         }
-        workRunnig =false
     }
 }
