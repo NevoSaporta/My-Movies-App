@@ -67,7 +67,6 @@ class WorkManagerActivity:AppCompatActivity() {
         workId?.let {
             WorkManager.getInstance(this).cancelWorkById(it)
             workId = null
-            wma_progress_percentages.text=""
 1        }
     }
     inner class WorkerBackGroundProgressReceiver: BroadcastReceiver(){
