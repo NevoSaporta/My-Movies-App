@@ -19,6 +19,12 @@
         </activity>
         <activity android:name=".threads.AsyncTaskActivity"/>
         <activity android:name=".threads.ThreadsActivity"/>
+        <activity android:name=".services.BGServiceActivity"/>
+        <activity android:name=".services.WorkManagerActivity"/>
+        <service android:name=".services.HardJobIntentService"
+                 android:exported="false"/>
+        <service android:name=".services.HardJobService"
+                 android:exported="false"/>
     </application>
 
 </manifest>
