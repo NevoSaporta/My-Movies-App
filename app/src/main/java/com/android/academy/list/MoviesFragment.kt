@@ -3,16 +3,27 @@ package com.android.academy.list
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.os.Debug
+import android.util.Log
 import android.view.*
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.android.academy.R
 import com.android.academy.model.MovieModel
+import com.android.academy.model.MovieModelConverter
+import com.android.academy.networking.MoviesService
+import com.android.academy.networking.Results
+import com.android.academy.networking.ResultsBase
 import com.android.academy.services.BGServiceActivity
 import com.android.academy.services.WorkManagerActivity
 import com.android.academy.threads.AsyncTaskActivity
 import com.android.academy.threads.ThreadsActivity
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
 
 class MoviesFragment :Fragment(), OnMovieClickListener {
 
@@ -21,6 +32,16 @@ class MoviesFragment :Fragment(), OnMovieClickListener {
     private lateinit var moviesAdapter : MoviesViewAdapter
     private var listener :OnMovieClickListener? =null
 
+    object RestClient {
+        private val retrofit : Retrofit = Retrofit.Builder()
+            .addConverterFactory(GsonConverterFactory.create())
+            .baseUrl(MoviesService.BASE_API_URL)
+            .build()
+
+
+        val moviesService: MoviesService = retrofit.create(MoviesService::class.java)
+
+    }
     companion object{
         val TAG =MoviesFragment::class.simpleName
     }
@@ -90,7 +111,25 @@ class MoviesFragment :Fragment(), OnMovieClickListener {
     fun getMovies():List<MovieModel> =movies
 
     private fun loadMovies() {
-        movies.add(
+        val call :Call<ResultsBase> = RestClient.moviesService.loadPopularMovies()
+        call.enqueue(object : Callback<ResultsBase> {
+            override fun onFailure(call: Call<ResultsBase>, t: Throwable) {
+                Log.i(TAG, "not good")
+            }
+
+            override fun onResponse(call: Call<ResultsBase>, response: Response<ResultsBase>) {
+                if (response.isSuccessful) {
+                    response.body()?.let {
+                      movies.addAll( MovieModelConverter.movieConvert(it.results))
+                        for(movie in movies){
+                            Log.i(TAG,movie.name)
+                        }
+                        moviesRcv.adapter?.notifyDataSetChanged()
+                    }
+                }
+            }
+        })
+        /*movies.add(
             MovieModel(
                 getString(R.string.black_panther_name),
                 R.drawable.black_panther,
@@ -179,7 +218,7 @@ class MoviesFragment :Fragment(), OnMovieClickListener {
                 getString(R.string.thor_ragnarok_url),
                 R.drawable.thor_ragnarok_back
             )
-        )
+        )*/
     }
 
     private fun initRecyclerView(){

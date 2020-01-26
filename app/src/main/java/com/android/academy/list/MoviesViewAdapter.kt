@@ -51,7 +51,7 @@ class MoviesViewAdapter (private val movieClickListener: OnMovieClickListener ,c
         }
 
         fun bind(movieModel: MovieModel) {
-            ivImage.setImageResource(movieModel.imageRes)
+            //ivImage.setImageResource(movieModel.imageRes)
             tvTitle.text = movieModel.name
             tvOverview.text = movieModel.overview
             this.movieModel = movieModel

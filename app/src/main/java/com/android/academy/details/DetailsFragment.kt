@@ -53,8 +53,8 @@ class DetailsFragment:Fragment(){
     fun loadMovie(movie: MovieModel){
         titleText.text = movie.name
         overviewText.text = movie.overview
-        posterImage.setImageResource(movie.imageRes)
-        backImage.setImageResource(movie.backgroundRes)
+        //posterImage.setImageResource(movie.imageRes)
+        //backImage.setImageResource(movie.backgroundRes)
         trailerButton.setOnClickListener {
             val webpage:Uri = Uri.parse(movie.url)
             val intent = Intent(Intent.ACTION_VIEW,webpage)

@@ -33,6 +33,10 @@ dependencies {
     def work_version="2.2.0"
     implementation "androidx.work:work-runtime:$work_version"
 
+    implementation 'com.squareup.retrofit2:retrofit:2.6.2'
+    implementation 'com.squareup.retrofit2:converter-gson:2.6.2'
+
+
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     implementation "org.jetbrains.kotlin:kotlin-reflect:1.3.61"
