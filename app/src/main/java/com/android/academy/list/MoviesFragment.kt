@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.android.academy.R
 import com.android.academy.model.MovieModel
+import com.android.academy.model.MovieModelConverter
 import com.android.academy.networking.MoviesService
 import com.android.academy.networking.Results
 import com.android.academy.networking.ResultsBase
@@ -107,7 +108,11 @@ class MoviesFragment :Fragment(), OnMovieClickListener {
             override fun onResponse(call: Call<ResultsBase>, response: Response<ResultsBase>) {
                 if (response.isSuccessful) {
                     response.body()?.let {
-                        Log.i(TAG, it.toString())
+                      movies.addAll( MovieModelConverter.movieConvert(it.results))
+                        for(movie in movies){
+                            Log.i(TAG,movie.name)
+                        }
+                        moviesRcv.adapter?.notifyDataSetChanged()
                     }
                 }
             }
