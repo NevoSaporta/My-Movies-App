@@ -119,11 +119,11 @@ class MoviesFragment :Fragment(), OnMovieClickListener {
 
             override fun onResponse(call: Call<ResultsBase>, response: Response<ResultsBase>) {
                 if (response.isSuccessful) {
-                    response.body()?.let {
-                      movies.addAll( MovieModelConverter.movieConvert(it.results))
-                        for(movie in movies){
-                            Log.i(TAG,movie.name)
-                        }
+                    response.body()?.let { resultsBase ->
+                        MovieModelConverter.movieConvert(resultsBase.results).map {
+                          movies.add(MovieModel(it.name,"","","",""))
+                      }
+                        moviesAdapter.setData(movies)
                         moviesRcv.adapter?.notifyDataSetChanged()
                     }
                 }
