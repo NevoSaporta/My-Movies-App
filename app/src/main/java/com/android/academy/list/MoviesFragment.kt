@@ -106,7 +106,7 @@ class MoviesFragment :Fragment(), OnMovieClickListener {
 
             override fun onResponse(call: Call<ResultsBase>, response: Response<ResultsBase>) {
                 if (response.isSuccessful) {
-                    response?.body()?.let {
+                    response.body()?.let {
                         Log.i(TAG, it.toString())
                     }
                 }

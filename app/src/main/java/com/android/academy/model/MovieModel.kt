@@ -7,8 +7,8 @@ import kotlinx.android.parcel.Parcelize
 @Parcelize
 data class MovieModel (
     val name :String,
-    @DrawableRes val imageRes: Int,
+    val imageRes: String,
     val overview: String ="",
     val url: String ="",
-    @DrawableRes val backgroundRes: Int
+    val backgroundRes: String
 ):Parcelable
