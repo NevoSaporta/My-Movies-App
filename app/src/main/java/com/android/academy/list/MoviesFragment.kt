@@ -15,6 +15,8 @@ import com.android.academy.model.MovieModelConverter
 import com.android.academy.networking.MoviesService
 import com.android.academy.networking.Results
 import com.android.academy.networking.ResultsBase
+import com.android.academy.services.BGServiceActivity
+import com.android.academy.services.WorkManagerActivity
 import com.android.academy.threads.AsyncTaskActivity
 import com.android.academy.threads.ThreadsActivity
 import retrofit2.Call
@@ -87,6 +89,16 @@ class MoviesFragment :Fragment(), OnMovieClickListener {
             }
             R.id.handler_menu_item ->{
                 val intent = Intent(activity,ThreadsActivity::class.java)
+                startActivity(intent)
+                true
+            }
+            R.id.service_menu_item ->{
+                val intent = Intent(activity,BGServiceActivity::class.java)
+                startActivity(intent)
+                true
+            }
+            R.id.work_manager_menu_item ->{
+                val intent = Intent(activity,WorkManagerActivity::class.java)
                 startActivity(intent)
                 true
             }

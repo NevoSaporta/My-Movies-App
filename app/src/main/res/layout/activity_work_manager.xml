@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <Button
+        android:id="@+id/wma_enqueue_work_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/regular_margin"
+        android:layout_marginStart="@dimen/small_margin"
+        android:text="@string/wma_enqueue_button"
+        app:layout_constraintTop_toBottomOf="@id/wma_required_battery"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/wma_cancel_work_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/regular_margin"
+        android:layout_marginEnd="@dimen/small_margin"
+        android:text="@string/wma_cancel_work_button"
+        app:layout_constraintTop_toBottomOf="@id/wma_required_battery_switch"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <TextView
+        android:id="@+id/wma_progress_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/regular_margin"
+        android:text="@string/wma_title_text"
+        android:textSize="@dimen/bga_title_text_size"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:textColor="@color/colorPrimary"/>
+
+    <TextView
+        android:id="@+id/wma_progress_percentages"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/bga_progress_text_size"
+        android:layout_margin="@dimen/regular_margin"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/wma_progress_tv"
+        tools:text="40%"/>
+
+    <TextView
+        android:id="@+id/wma_required_network"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/wma_required_network"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/wma_progress_percentages"
+        android:layout_marginStart="@dimen/small_margin"
+        android:layout_marginTop="@dimen/regular_margin"
+        android:textSize="@dimen/wma_required_text_size"/>
+
+    <TextView
+        android:id="@+id/wma_required_charging"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/wma_required_charging"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/wma_required_network"
+        android:layout_marginStart="@dimen/small_margin"
+        android:layout_marginTop="@dimen/regular_margin"
+        android:textSize="@dimen/wma_required_text_size"/>
+
+    <TextView
+        android:id="@+id/wma_required_battery"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/wma_required_battery"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/wma_required_charging"
+        android:layout_marginStart="@dimen/small_margin"
+        android:layout_marginTop="@dimen/regular_margin"
+        android:textSize="@dimen/wma_required_text_size"/>
+
+    <Switch
+        android:id="@+id/wma_network_switch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/wma_progress_percentages"
+        android:layout_marginEnd="@dimen/regular_margin"
+        android:layout_marginTop="@dimen/regular_margin"/>
+
+    <Switch
+        android:id="@+id/wma_charging_switch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/wma_network_switch"
+        android:layout_marginEnd="@dimen/regular_margin"
+        android:layout_marginTop="@dimen/regular_margin"/>
+
+    <Switch
+        android:id="@+id/wma_required_battery_switch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/wma_charging_switch"
+        android:layout_marginEnd="@dimen/regular_margin"
+        android:layout_marginTop="@dimen/regular_margin"/>
+</androidx.constraintlayout.widget.ConstraintLayout>
