@@ -1,4 +1,3 @@
-package com.android.academy.networking
 import com.google.gson.annotations.SerializedName
 
 /*
@@ -13,20 +12,14 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 For support, please feel free to contact me at https://www.linkedin.com/in/syedabsar */
 
 
-data class Results (
+data class TrailerResults (
 
-	@SerializedName("vote_count") val vote_count : Int,
-	@SerializedName("id") val id : Int,
-	@SerializedName("video") val video : Boolean,
-	@SerializedName("vote_average") val vote_average : Double,
-	@SerializedName("title") val title : String,
-	@SerializedName("popularity") val popularity : Double,
-	@SerializedName("poster_path") val poster_path : String,
-	@SerializedName("original_language") val original_language : String,
-	@SerializedName("original_title") val original_title : String,
-	@SerializedName("genre_ids") val genre_ids : List<Int>,
-	@SerializedName("backdrop_path") val backdrop_path : String,
-	@SerializedName("adult") val adult : Boolean,
-	@SerializedName("overview") val overview : String,
-	@SerializedName("release_date") val release_date : String
+	@SerializedName("id") val id : String,
+	@SerializedName("iso_639_1") val iso_639_1 : String,
+	@SerializedName("iso_3166_1") val iso_3166_1 : String,
+	@SerializedName("key") val key : String,
+	@SerializedName("name") val name : String,
+	@SerializedName("site") val site : String,
+	@SerializedName("size") val size : Int,
+	@SerializedName("type") val type : String
 )
