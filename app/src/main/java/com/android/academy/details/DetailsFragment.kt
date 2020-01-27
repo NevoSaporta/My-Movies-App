@@ -1,8 +1,10 @@
 package com.android.academy.details
 
+import TrailerResultsBase
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,6 +14,11 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import com.android.academy.R
 import com.android.academy.model.MovieModel
+import com.android.academy.networking.MoviesService
+import com.squareup.picasso.Picasso
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class DetailsFragment:Fragment(){
 
@@ -24,6 +31,8 @@ class DetailsFragment:Fragment(){
 
     companion object{
         private const val MOVIE_BUNDLE_KEY ="unique_movie_key"
+        private const val YOUTUBE_URL ="https://www.youtube.com/watch?v="
+         val TAG =DetailsFragment::class.simpleName
 
         fun newInstance(movie :MovieModel):DetailsFragment{
             val fragment =DetailsFragment()
@@ -39,6 +48,7 @@ class DetailsFragment:Fragment(){
         val movie:MovieModel? = arguments?.getParcelable(MOVIE_BUNDLE_KEY)
         initViews(view)
         movie?.let (::loadMovie)
+        Log.i(TAG,movie!!.url)
         return view
     }
 
@@ -53,14 +63,35 @@ class DetailsFragment:Fragment(){
     fun loadMovie(movie: MovieModel){
         titleText.text = movie.name
         overviewText.text = movie.overview
-        //posterImage.setImageResource(movie.imageRes)
-        //backImage.setImageResource(movie.backgroundRes)
+        if (movie.imageRes.isNotEmpty()) {
+            Picasso.get()
+                .load(movie.imageRes)
+                .into(posterImage)
+        }
+        if (movie.backgroundRes.isNotEmpty()) {
+            Picasso.get()
+                .load(movie.backgroundRes)
+                .into(backImage)
+        }
         trailerButton.setOnClickListener {
-            val webpage:Uri = Uri.parse(movie.url)
-            val intent = Intent(Intent.ACTION_VIEW,webpage)
-            if(intent.resolveActivity(activity!!.packageManager)!=null){
-                startActivity(intent)
-            }
+            val call :Call<TrailerResultsBase> = MoviesService.RestClient.moviesService.loadTrailer(movie.id.toString())
+            call.enqueue(object : Callback<TrailerResultsBase> {
+                override fun onFailure(call: Call<TrailerResultsBase>, t: Throwable) {
+                    Log.i(TAG,"not good")
+                }
+                override fun onResponse(call: Call<TrailerResultsBase>, response: Response<TrailerResultsBase>) {
+                    if (response.isSuccessful) {
+                        response.body()?.let {
+                            movie.url = "${YOUTUBE_URL}${it.results[0].key}"
+                            val webpage:Uri = Uri.parse(movie.url)
+                            val intent = Intent(Intent.ACTION_VIEW,webpage)
+                            if(intent.resolveActivity(activity!!.packageManager)!=null){
+                                startActivity(intent)
+                            }
+                        }
+                    }
+                }
+            })
         }
     }
 

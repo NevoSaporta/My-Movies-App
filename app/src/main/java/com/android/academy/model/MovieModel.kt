@@ -1,27 +1,30 @@
 package com.android.academy.model
 
 import android.os.Parcelable
-import com.android.academy.networking.Results
+import com.android.academy.networking.MoviesService
+import com.android.academy.networking.MoviesResults
 import kotlinx.android.parcel.Parcelize
 
 @Parcelize
 data class MovieModel (
+    val id :Int ,
     val name :String,
     val imageRes: String,
     val overview: String ="",
-    val url: String ="",
+    var url: String ="",
     val backgroundRes: String
 ):Parcelable
 
 object MovieModelConverter{
-    fun movieConvert(result:List<Results>):List<MovieModel>{
+    fun movieConvert(result:List<MoviesResults>):List<MovieModel>{
         return result.map {
             MovieModel(
+                it.id,
                 it.title,
-                /*it.poster_path,*/"",
+                "${MoviesService.POSTER_BASE_URL}${it.poster_path}",
                 it.overview,
-                it.video.toString(),
-                ""/*it.backdrop_path*/
+                "",
+                "${MoviesService.BACKDROP_BASE_URL}${it.backdrop_path}"
             )
         }
     }
