@@ -57,11 +57,6 @@ class MoviesFragment :Fragment(), OnMovieClickListener {
         listener = null
     }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        movies.clear()
-        loadMovies()
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -225,9 +220,12 @@ class MoviesFragment :Fragment(), OnMovieClickListener {
 
             moviesAdapter = MoviesViewAdapter(context = it,movieClickListener = this@MoviesFragment)
 
+            movies.clear()
+            loadMovies()
+
             moviesRcv.adapter =moviesAdapter
 
-            moviesAdapter.setData(movies)
+
         }
     }
 
