@@ -10,6 +10,10 @@ interface MoviesService {
         const val BASE_URL = "https://api.themoviedb.org"
         const val BASE_API_URL = "$BASE_URL/3/"
         private const val POPULAR = "movie/popular"
+
+        const val POSTER_BASE_URL = "https://image.tmdb.org/t/p/w342"
+        const val BACKDROP_BASE_URL = "https://image.tmdb.org/t/p/w780"
+
         /* api key */
         private const val apiKey = "8ab36487b56b337252b05a364e271dd3"
         private const val keyQuery = "?api_key=$apiKey"

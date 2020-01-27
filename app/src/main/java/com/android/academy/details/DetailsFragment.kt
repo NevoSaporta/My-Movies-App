@@ -12,6 +12,7 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import com.android.academy.R
 import com.android.academy.model.MovieModel
+import com.squareup.picasso.Picasso
 
 class DetailsFragment:Fragment(){
 
@@ -53,8 +54,16 @@ class DetailsFragment:Fragment(){
     fun loadMovie(movie: MovieModel){
         titleText.text = movie.name
         overviewText.text = movie.overview
-        //posterImage.setImageResource(movie.imageRes)
-        //backImage.setImageResource(movie.backgroundRes)
+        if (movie.imageRes.isNotEmpty()) {
+            Picasso.get()
+                .load(movie.imageRes)
+                .into(posterImage)
+        }
+        if (movie.backgroundRes.isNotEmpty()) {
+            Picasso.get()
+                .load(movie.backgroundRes)
+                .into(backImage)
+        }
         trailerButton.setOnClickListener {
             val webpage:Uri = Uri.parse(movie.url)
             val intent = Intent(Intent.ACTION_VIEW,webpage)

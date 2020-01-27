@@ -10,6 +10,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.android.academy.R
 import com.android.academy.model.MovieModel
+import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.item_movie.view.*
 
 class MoviesViewAdapter (private val movieClickListener: OnMovieClickListener ,context:Context) : RecyclerView.Adapter<MoviesViewAdapter.ViewHolder>() {
@@ -52,7 +53,12 @@ class MoviesViewAdapter (private val movieClickListener: OnMovieClickListener ,c
         }
 
         fun bind(movieModel: MovieModel) {
-            //ivImage.setImageResource(movieModel.imageRes)
+            if (movieModel.imageRes.isNotEmpty()) {
+                Picasso.get()
+                    .load(movieModel.imageRes)
+                    .into(ivImage)
+            }
+
             tvTitle.text = movieModel.name
             tvOverview.text = movieModel.overview
             this.movieModel = movieModel

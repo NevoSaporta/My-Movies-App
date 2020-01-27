@@ -116,6 +116,9 @@ class MoviesFragment :Fragment(), OnMovieClickListener {
                 if (response.isSuccessful) {
                     response.body()?.let { resultsBase ->
                         movies.addAll( MovieModelConverter.movieConvert(resultsBase.results))
+                        for(movie in movies){
+                            Log.i(TAG,movie.imageRes)
+                        }
                         moviesAdapter.setData(movies)
                         moviesRcv.adapter?.notifyDataSetChanged()
                     }
@@ -224,8 +227,6 @@ class MoviesFragment :Fragment(), OnMovieClickListener {
             loadMovies()
 
             moviesRcv.adapter =moviesAdapter
-
-
         }
     }
 
