@@ -1,6 +1,7 @@
 package com.android.academy.model
 
 import android.os.Parcelable
+import android.util.Log
 import com.android.academy.networking.Results
 import kotlinx.android.parcel.Parcelize
 
@@ -18,10 +19,10 @@ object MovieModelConverter{
         return result.map {
             MovieModel(
                 it.title,
-                /*it.poster_path,*/"",
+                it.poster_path,
                 it.overview,
                 it.video.toString(),
-                ""/*it.backdrop_path*/
+                it.backdrop_path
             )
         }
     }
