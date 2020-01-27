@@ -4,7 +4,6 @@ import TrailerResultsBase
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
-import android.os.Debug
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -14,10 +13,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import com.android.academy.R
-import com.android.academy.list.MoviesFragment
 import com.android.academy.model.MovieModel
-import com.android.academy.model.MovieModelConverter
-import com.android.academy.networking.MoviesResultsBase
 import com.android.academy.networking.MoviesService
 import com.squareup.picasso.Picasso
 import retrofit2.Call
