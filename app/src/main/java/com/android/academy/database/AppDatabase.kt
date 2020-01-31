@@ -8,6 +8,9 @@ import com.android.academy.model.MovieModel
 
 @Database(entities = [MovieModel::class],version = 1)
 abstract class AppDatabase:RoomDatabase() {
+
+    abstract fun movieDao(): MovieDao?
+
     companion object{
         private const val DATABASE_NAME = "movies"
         private var INSTANCE: AppDatabase? = null
