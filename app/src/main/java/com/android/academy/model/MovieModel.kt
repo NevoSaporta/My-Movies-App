@@ -19,19 +19,3 @@ data class MovieModel (
     val backgroundRes: String,
     var popularity:Double
 ):Parcelable
-
-object MovieModelConverter{
-    fun movieConvert(result:List<MoviesResults>):List<MovieModel>{
-        return result.map {
-            MovieModel(
-                it.id,
-                it.title,
-                "${MoviesService.POSTER_BASE_URL}${it.poster_path}",
-                it.overview,
-                "",
-                "${MoviesService.BACKDROP_BASE_URL}${it.backdrop_path}",
-                it.popularity
-            )
-        }
-    }
-}
