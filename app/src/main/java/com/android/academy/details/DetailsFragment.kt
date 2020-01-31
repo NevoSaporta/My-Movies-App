@@ -1,6 +1,5 @@
 package com.android.academy.details
 
-import TrailerResultsBase
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
@@ -15,6 +14,7 @@ import androidx.fragment.app.Fragment
 import com.android.academy.R
 import com.android.academy.model.MovieModel
 import com.android.academy.networking.MoviesService
+import com.android.academy.networking.TrailerResultsBase
 import com.squareup.picasso.Picasso
 import retrofit2.Call
 import retrofit2.Callback
