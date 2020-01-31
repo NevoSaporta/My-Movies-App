@@ -9,10 +9,11 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.android.academy.R
+import com.android.academy.database.AppDatabase
 import com.android.academy.model.MovieModel
 import com.android.academy.model.MovieModelConverter
-import com.android.academy.networking.MoviesService
 import com.android.academy.networking.MoviesResultsBase
+import com.android.academy.networking.MoviesService
 import com.android.academy.services.BGServiceActivity
 import com.android.academy.services.WorkManagerActivity
 import com.android.academy.threads.AsyncTaskActivity
@@ -20,6 +21,7 @@ import com.android.academy.threads.ThreadsActivity
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+
 
 class MoviesFragment :Fragment(), OnMovieClickListener {
 
@@ -92,6 +94,13 @@ class MoviesFragment :Fragment(), OnMovieClickListener {
     fun getMovies():List<MovieModel> =movies
 
     private fun loadMovies() {
+        val cachedMovies: List<MovieModel> = AppDatabase.getInstance(activity!!.applicationContext)!!.movieDao()!!.getAll()
+        if (cachedMovies.isNotEmpty()){
+            movies.addAll(cachedMovies)
+            moviesAdapter.setData(movies)
+            moviesRcv.adapter?.notifyDataSetChanged()
+        }
+
         val call :Call<MoviesResultsBase> = MoviesService.RestClient.moviesService.loadPopularMovies()
         call.enqueue(object : Callback<MoviesResultsBase> {
             override fun onFailure(call: Call<MoviesResultsBase>, t: Throwable) {
@@ -101,6 +110,8 @@ class MoviesFragment :Fragment(), OnMovieClickListener {
             override fun onResponse(call: Call<MoviesResultsBase>, response: Response<MoviesResultsBase>) {
                 if (response.isSuccessful) {
                     response.body()?.let { resultsBase ->
+                        AppDatabase.getInstance(activity!!.applicationContext)!!.movieDao()!!.deleteAll()
+                        AppDatabase.getInstance(activity!!.applicationContext)!!.movieDao()!!.insertAll(MovieModelConverter.movieConvert(resultsBase.results))
                         movies.addAll( MovieModelConverter.movieConvert(resultsBase.results))
                         moviesAdapter.setData(movies)
                         moviesRcv.adapter?.notifyDataSetChanged()
