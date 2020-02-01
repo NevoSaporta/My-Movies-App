@@ -12,7 +12,9 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import com.android.academy.R
+import com.android.academy.database.AppDatabase
 import com.android.academy.model.MovieModel
+import com.android.academy.model.TrailerModel
 import com.android.academy.networking.MoviesService
 import com.android.academy.networking.TrailerResultsBase
 import com.squareup.picasso.Picasso
@@ -74,25 +76,44 @@ class DetailsFragment:Fragment(){
                 .into(backImage)
         }
         trailerButton.setOnClickListener {
-            val call :Call<TrailerResultsBase> = MoviesService.RestClient.moviesService.loadTrailer(movie.id.toString())
-            call.enqueue(object : Callback<TrailerResultsBase> {
-                override fun onFailure(call: Call<TrailerResultsBase>, t: Throwable) {
-                    Log.i(TAG,"not good")
-                }
-                override fun onResponse(call: Call<TrailerResultsBase>, response: Response<TrailerResultsBase>) {
-                    if (response.isSuccessful) {
-                        response.body()?.let {
-                            movie.url = "${YOUTUBE_URL}${it.results[0].key}"
-                            val webpage:Uri = Uri.parse(movie.url)
-                            val intent = Intent(Intent.ACTION_VIEW,webpage)
-                            if(intent.resolveActivity(activity!!.packageManager)!=null){
-                                startActivity(intent)
+            val trailerModel = AppDatabase.getInstance(activity!!.applicationContext)!!.trailerDao()!!.getVideo(movie.id)
+            if(trailerModel !=null){
+                movie.url = "${YOUTUBE_URL}${trailerModel.key}"
+                setIntent(movie)
+            }
+            else{
+                val call :Call<TrailerResultsBase> = MoviesService.RestClient.moviesService.loadTrailer(movie.id.toString())
+                call.enqueue(object : Callback<TrailerResultsBase> {
+                    override fun onFailure(call: Call<TrailerResultsBase>, t: Throwable) {
+                        Log.i(TAG,"not good")
+                    }
+                    override fun onResponse(call: Call<TrailerResultsBase>, response: Response<TrailerResultsBase>) {
+                        if (response.isSuccessful) {
+                            response.body()?.let {
+                                val result = it.results[0]
+                                AppDatabase.getInstance(activity!!.applicationContext)!!.trailerDao()!!.insert(
+                                    TrailerModel(movie.id,result.id,result.key)
+                                )
+                                movie.url = "${YOUTUBE_URL}${result.key}"
+                                setIntent(movie)
                             }
                         }
                     }
-                }
-            })
+                })
+            }
         }
     }
 
+    private fun setIntent(movie: MovieModel) {
+        val webpage: Uri = Uri.parse(movie.url)
+        val intent = Intent(Intent.ACTION_VIEW, webpage)
+        if (intent.resolveActivity(activity!!.packageManager) != null) {
+            startActivity(intent)
+        }
+    }
+
+    override fun onStop() {
+        super.onStop()
+        AppDatabase.destroyInstance()
+    }
 }

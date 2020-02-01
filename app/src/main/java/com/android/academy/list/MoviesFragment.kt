@@ -137,4 +137,9 @@ class MoviesFragment :Fragment(), OnMovieClickListener {
     override fun onMovieClicked(movieModel: MovieModel) {
         listener?.onMovieClicked(movieModel)
     }
+
+    override fun onStop() {
+        super.onStop()
+        AppDatabase.destroyInstance()
+    }
 }
