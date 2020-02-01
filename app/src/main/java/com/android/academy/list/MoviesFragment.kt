@@ -5,6 +5,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.*
+import android.widget.ImageButton
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -29,6 +30,7 @@ class MoviesFragment :Fragment(), OnMovieClickListener {
     private val movies :MutableList<MovieModel> = ArrayList()
     private lateinit var moviesAdapter : MoviesViewAdapter
     private var listener :OnMovieClickListener? =null
+    private lateinit var deleteAllMoviesButton: ImageButton
 
     companion object{
         val TAG =MoviesFragment::class.simpleName
@@ -53,6 +55,11 @@ class MoviesFragment :Fragment(), OnMovieClickListener {
     ): View? {
         val view = inflater.inflate(R.layout.fragment_movies,container,false)
         moviesRcv =view.findViewById(R.id.fragment_movies_rcv)
+        //setting the button
+        deleteAllMoviesButton =view.findViewById(R.id.delete_all_movies_button)
+        deleteAllMoviesButton.setOnClickListener {
+            AppDatabase.getInstance(activity!!.applicationContext)!!.movieDao()!!.deleteAll()
+        }
         initRecyclerView()
         setHasOptionsMenu(true)
         return view

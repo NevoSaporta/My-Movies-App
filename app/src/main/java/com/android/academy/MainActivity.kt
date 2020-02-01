@@ -2,7 +2,9 @@
 package com.android.academy
 
 import android.os.Bundle
+import android.widget.ImageButton
 import androidx.appcompat.app.AppCompatActivity
+import com.android.academy.database.AppDatabase
 import com.android.academy.details.DetailsFragmentHolder
 import com.android.academy.list.MoviesFragment
 import com.android.academy.list.OnMovieClickListener
@@ -12,6 +14,7 @@ class MainActivity : AppCompatActivity(),
     OnMovieClickListener {
 
     private lateinit var moviesFragment : MoviesFragment
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_movies)

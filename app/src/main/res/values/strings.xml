@@ -60,4 +60,5 @@
     <string name="work_manager_menu_item">Open WorkerManager Activity</string>
     <string name="wma_enqueue_button">ENQUEUE WORK</string>
     <string name="wma_cancel_work_button">CANCEL WORK</string>
+    <string name="delete_all_button_description">delete all mvoies from db button</string>
 </resources>
