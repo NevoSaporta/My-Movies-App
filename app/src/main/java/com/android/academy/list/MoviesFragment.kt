@@ -119,6 +119,7 @@ class MoviesFragment :Fragment(), OnMovieClickListener {
                     response.body()?.let { resultsBase ->
                         AppDatabase.getInstance(activity!!.applicationContext)!!.movieDao()!!.deleteAll()
                         AppDatabase.getInstance(activity!!.applicationContext)!!.movieDao()!!.insertAll(MovieModelConverter.movieConvert(resultsBase.results))
+                        movies.clear()
                         movies.addAll( MovieModelConverter.movieConvert(resultsBase.results))
                         moviesAdapter.setData(movies)
                         moviesRcv.adapter?.notifyDataSetChanged()
@@ -136,7 +137,6 @@ class MoviesFragment :Fragment(), OnMovieClickListener {
 
             movies.clear()
             loadMovies()
-
             moviesRcv.adapter =moviesAdapter
         }
     }
