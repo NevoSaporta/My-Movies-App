@@ -62,4 +62,6 @@
     <string name="wma_enqueue_button">ENQUEUE WORK</string>
     <string name="wma_cancel_work_button">CANCEL WORK</string>
     <string name="delete_all_button_description">delete all mvoies from db button</string>
+    <string name="download_image_description">download image</string>
+    <string name="fd_download_icon">download icon</string>
 </resources>

@@ -22,6 +22,7 @@
         <activity android:name=".threads.ThreadsActivity"/>
         <activity android:name=".services.BGServiceActivity"/>
         <activity android:name=".services.WorkManagerActivity"/>
+        <activity android:name=".download.DownloadActivity"/>
         <service android:name=".services.HardJobIntentService"
                  android:exported="false"/>
         <service android:name=".services.HardJobService"
