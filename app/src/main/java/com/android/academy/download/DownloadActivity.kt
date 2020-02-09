@@ -25,12 +25,10 @@ class DownloadActivity : AppCompatActivity() {
         private const val ARG_MOVIE_MODEL = "arguments"
         private const val PERMISSION = android.Manifest.permission.WRITE_EXTERNAL_STORAGE
         private const val PERMISSIONS_REQUEST_CODE = 7777
-        lateinit var builder :AlertDialog.Builder
 
         fun startActivity(context: Context, movieModel: MovieModel) {
             val intent = Intent(context, DownloadActivity::class.java)
             intent.putExtra(ARG_MOVIE_MODEL, movieModel)
-            builder = AlertDialog.Builder(context)
             context.startActivity(intent)
         }
     }
@@ -38,7 +36,10 @@ class DownloadActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_download)
+    }
 
+    override fun onResume() {
+        super.onResume()
         if (isPermissionGranted) {
         } else {
             requestPermission()
@@ -54,6 +55,9 @@ class DownloadActivity : AppCompatActivity() {
     }
 
     private fun showExplainingRationaleDialog() {
+        val builder = AlertDialog.Builder(this)
+        builder.setTitle(R.string.download_dialog_title)
+        builder.setMessage(R.string.download_dialog_message)
         builder.setPositiveButton("ok") { dialogInterface, i -> requestWritePermission() }
         builder.setNegativeButton("cancel") { dialogInterface, i ->
             this.finish()

@@ -63,4 +63,6 @@
     <string name="delete_all_button_description">delete all mvoies from db button</string>
     <string name="download_image_description">download image</string>
     <string name="fd_download_icon">download icon</string>
+    <string name="download_dialog_title">Permission needed</string>
+    <string name="download_dialog_message">To be able downloading requested file the app need to be granted to access your files</string>
 </resources>
