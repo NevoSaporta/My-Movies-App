@@ -29,7 +29,20 @@ class DownloadService:Service() {
 
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
         startForeground()
-        var url = intent!!.getStringExtra(URL)
+        val url = intent!!.getStringExtra(URL)
+        url?.let {
+            DownloadThread(it,object :DownloadThread.DownloadCallBack{
+                override fun onProgressUpdate(percent: Int) {
+                }
+
+                override fun onDownloadFinished(filePath: String) {
+                }
+
+                override fun onError(error: String) {
+                }
+
+            }).start()
+        }
         return START_STICKY
     }
 
