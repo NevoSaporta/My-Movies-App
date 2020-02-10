@@ -36,11 +36,8 @@ class DownloadActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_download)
-    }
-
-    override fun onResume() {
-        super.onResume()
         if (isPermissionGranted) {
+            startDownloadService()
         } else {
             requestPermission()
         }
@@ -89,6 +86,9 @@ class DownloadActivity : AppCompatActivity() {
     }
 
     private fun startDownloadService() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        val movieModel = intent.getParcelableExtra<MovieModel>(ARG_MOVIE_MODEL)
+        movieModel?.let {
+            DownloadService.startService(this,it.url)
+        }
     }
 }

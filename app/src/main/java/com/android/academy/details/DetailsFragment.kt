@@ -108,6 +108,7 @@ class DetailsFragment:Fragment(){
         }
 
         downloadButton.setOnClickListener {
+
             DownloadActivity.startActivity(context!!,movie)
         }
 
