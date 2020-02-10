@@ -33,6 +33,7 @@ class DownloadService:Service() {
         url?.let {
             DownloadThread(it,object :DownloadThread.DownloadCallBack{
                 override fun onProgressUpdate(percent: Int) {
+                    updateNotification(percent)
                 }
 
                 override fun onDownloadFinished(filePath: String) {
@@ -45,6 +46,12 @@ class DownloadService:Service() {
         }
         return START_STICKY
     }
+
+    private fun updateNotification(progress: Int) {
+        val notificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+        notificationManager.notify(ONGOING_NOTIFICATION_ID, createNotification(progress))
+    }
+
 
     private fun startForeground() {
         createNotificationChannel()
