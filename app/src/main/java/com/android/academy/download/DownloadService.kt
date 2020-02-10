@@ -4,8 +4,10 @@ import android.app.*
 import android.content.Context
 import android.content.Intent
 import android.graphics.Color
+import android.nfc.Tag
 import android.os.Build
 import android.os.IBinder
+import android.util.Log
 import androidx.core.app.NotificationCompat
 import com.android.academy.R
 
@@ -14,6 +16,8 @@ class DownloadService:Service() {
     companion object {
         const val URL: String = "URL"
         const val ONGOING_NOTIFICATION_ID: Int = 14000605
+        val TAG = DownloadService::class.java.simpleName
+
         private const val CHANNEL_DEFAULT_IMPORTANCE = "Channel"
 
         fun startService(activity: Activity, url: String) {
@@ -40,6 +44,8 @@ class DownloadService:Service() {
                 }
 
                 override fun onError(error: String) {
+                    Log.e(TAG, "DownloadService, DownloadThread, Error: $error")
+                    stopSelf()
                 }
 
             }).start()
