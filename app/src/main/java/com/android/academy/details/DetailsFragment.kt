@@ -8,11 +8,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import com.android.academy.R
 import com.android.academy.database.AppDatabase
+import com.android.academy.download.DownloadActivity
 import com.android.academy.model.MovieModel
 import com.android.academy.model.TrailerModel
 import com.android.academy.networking.MoviesService
@@ -30,6 +32,7 @@ class DetailsFragment:Fragment(){
     private lateinit var releaseDateText :TextView
     private lateinit var trailerButton :Button
     private lateinit var overviewText :TextView
+    private lateinit var downloadButton :ImageButton
 
     companion object{
         private const val MOVIE_BUNDLE_KEY ="unique_movie_key"
@@ -61,6 +64,7 @@ class DetailsFragment:Fragment(){
         trailerButton = view.findViewById(R.id.fd_movie_trailer_btn)
         overviewText = view.findViewById(R.id.fd_overview_text)
         backImage =view.findViewById(R.id.fd_background_img)
+        downloadButton = view.findViewById(R.id.fd_download_icon)
     }
     fun loadMovie(movie: MovieModel){
         titleText.text = movie.name
@@ -102,6 +106,11 @@ class DetailsFragment:Fragment(){
                 })
             }
         }
+
+        downloadButton.setOnClickListener {
+            DownloadActivity.startActivity(context!!,movie)
+        }
+
     }
 
     private fun setIntent(movie: MovieModel) {

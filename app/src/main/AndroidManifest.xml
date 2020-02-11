@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.android.academy">
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -21,10 +22,15 @@
         <activity android:name=".threads.ThreadsActivity"/>
         <activity android:name=".services.BGServiceActivity"/>
         <activity android:name=".services.WorkManagerActivity"/>
+        <activity android:name=".download.DownloadActivity"/>
+
         <service android:name=".services.HardJobIntentService"
                  android:exported="false"/>
         <service android:name=".services.HardJobService"
                  android:exported="false"/>
+        <service android:name=".download.DownloadService"
+                 android:exported="false"/>
+
     </application>
 
 </manifest>

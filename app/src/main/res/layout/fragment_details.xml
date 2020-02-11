@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<RelativeLayout xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:android="http://schemas.android.com/apk/res/android"
@@ -13,6 +13,16 @@
         android:scaleType="centerCrop"
         android:layout_alignParentTop="true"
         android:contentDescription="@string/background_img_description" />
+
+    <ImageButton
+        android:id="@+id/fd_download_icon"
+        android:layout_width="@dimen/download_icon_width"
+        android:layout_height="@dimen/download_icon_height"
+        android:layout_alignEnd="@+id/fd_background_img"
+        android:layout_alignBottom="@+id/fd_background_img"
+        android:contentDescription="@string/fd_download_icon"
+        app:srcCompat="@android:drawable/stat_sys_download"
+        android:background="@color/download_icon"/>
 
     <ImageView
         android:id="@+id/fd_main_img"
