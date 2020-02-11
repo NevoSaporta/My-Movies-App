@@ -9,6 +9,7 @@ import android.os.Build
 import android.os.IBinder
 import android.util.Log
 import androidx.core.app.NotificationCompat
+import androidx.localbroadcastmanager.content.LocalBroadcastManager
 import com.android.academy.R
 
 class DownloadService:Service() {
@@ -16,6 +17,8 @@ class DownloadService:Service() {
     companion object {
         const val URL: String = "URL"
         const val ONGOING_NOTIFICATION_ID: Int = 14000605
+        const val BROADCAST_ACTION: String = "com.academy.fundamentals.DOWNLOAD_COMPLETE"
+
         val TAG = DownloadService::class.java.simpleName
 
         private const val CHANNEL_DEFAULT_IMPORTANCE = "Channel"
@@ -27,13 +30,17 @@ class DownloadService:Service() {
         }
     }
 
+    override fun onCreate() {
+        super.onCreate()
+        startForeground()
+    }
+
     override fun onBind(intent: Intent?): IBinder? {
         return null
     }
 
-    override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
-        startForeground()
-        val url = intent!!.getStringExtra(URL)
+    override fun onStartCommand(intent: Intent, flags: Int, startId: Int): Int {
+        val url = intent.getStringExtra(URL)
         url?.let {
             DownloadThread(it,object :DownloadThread.DownloadCallBack{
                 override fun onProgressUpdate(percent: Int) {
@@ -41,6 +48,8 @@ class DownloadService:Service() {
                 }
 
                 override fun onDownloadFinished(filePath: String) {
+                    sendBroadcastMsgDownloadComplete(filePath)
+                    stopSelf()
                 }
 
                 override fun onError(error: String) {
@@ -53,6 +62,13 @@ class DownloadService:Service() {
         return START_STICKY
     }
 
+
+    private fun sendBroadcastMsgDownloadComplete(filePath: String) {
+        val intent = Intent(BROADCAST_ACTION)
+        intent.putExtra(DownloadActivity.ARG_FILE_PATH, filePath)
+        LocalBroadcastManager.getInstance(this).sendBroadcast(intent)
+    }
+
     private fun updateNotification(progress: Int) {
         val notificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
         notificationManager.notify(ONGOING_NOTIFICATION_ID, createNotification(progress))
@@ -61,7 +77,7 @@ class DownloadService:Service() {
 
     private fun startForeground() {
         createNotificationChannel()
-        createNotification(0)
+        startForeground(ONGOING_NOTIFICATION_ID, createNotification(0))
     }
 
     private fun createNotificationChannel() {
@@ -90,7 +106,7 @@ class DownloadService:Service() {
         return NotificationCompat.Builder(this, CHANNEL_DEFAULT_IMPORTANCE)
             .setContentTitle(getText(R.string.notification_title))
             .setContentText(progressStr)
-            .setSmallIcon(android.R.drawable.stat_sys_upload)
+            .setSmallIcon(android.R.drawable.stat_sys_download )
             .setProgress(100, progress, false)
             .setContentIntent(pendingIntent)
             .build()
